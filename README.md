@@ -1,7 +1,7 @@
 ## ElasticSearch Dockerfile
 
 
-This repository contains **Dockerfile** of [ElasticSearch](http://www.elasticsearch.org/) for [Docker](https://www.docker.com/)'s [automated build](https://registry.hub.docker.com/u/dockerfile/elasticsearch/) published to the public [Docker Hub Registry](https://registry.hub.docker.com/).
+This repository contains **Dockerfile** of [ElasticSearch](http://www.elasticsearch.org/) for [nvite](https://nvite.com/)'s [automated build](https://registry.hub.docker.com/u/nvite/elasticsearch/) published to the public [Docker Hub Registry](https://registry.hub.docker.com/).
 
 
 ### Base Docker Image
@@ -13,14 +13,20 @@ This repository contains **Dockerfile** of [ElasticSearch](http://www.elasticsea
 
 1. Install [Docker](https://www.docker.com/).
 
-2. Download [automated build](https://registry.hub.docker.com/u/dockerfile/elasticsearch/) from public [Docker Hub Registry](https://registry.hub.docker.com/): `docker pull dockerfile/elasticsearch`
+2. Download [automated build](https://registry.hub.docker.com/u/nvite/elasticsearch/) from public [Docker Hub Registry](https://registry.hub.docker.com/): `docker pull nvite/elasticsearch`
 
-   (alternatively, you can build an image from Dockerfile: `docker build -t="dockerfile/elasticsearch" github.com/dockerfile/elasticsearch`)
+   (alternatively, you can build an image from Dockerfile: `docker build -t="nvite/elasticsearch" github.com/nvite/dockerfile-elasticsearch`)
 
 
 ### Usage
 
-    docker run -d -p 9200:9200 -p 9300:9300 dockerfile/elasticsearch
+1. Set up the `env` on the host machine:
+
+  - `$ES_HOSTS=master.ip.addresses,for.unicast.discovery`
+  - `$ES_MASTER=true|false`
+  - `$PRIVATE_IP` (if not already set)
+
+    `docker run -d -p 9200:9200 -p 9300:9300 -e ES_HOSTS -e ES_MASTER -e PRIVATE_IP nvite/elasticsearch`
 
 #### Attach persistent/shared directories
 
