@@ -3,3 +3,18 @@ path:
   logs: /data/log
   plugins: /data/plugins
   work: /data/work
+
+discovery:
+  zen:
+    ping:
+      multicast:
+        enabled: false
+      unicast:
+        hosts: ${ES_HOSTS}
+
+network.publish_host: ${PRIVATE_IP}
+
+cluster.name: "nvite.cluster1"
+
+node.master: ${ES_MASTER}
+node.data: true
